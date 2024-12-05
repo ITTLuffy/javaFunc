@@ -22,10 +22,10 @@ public class App {
         appendiValore(vettore, 1);
         appendiValore(vettore, 2);
         appendiValore(vettore, 3);
-        appendiValore(vettore, 4);
+        appendiValore(vettore, 5);
         stampa(vettore);
 
-        for(int i = 0; i < dim; i++) {
+        for (int i = 0; i < dim; i++) {
             System.out.println("Inserisci il valore e la posizione in cui vuoi inserirlo");
             nuovoElemento(vettore, in.nextInt(), in.nextInt());
             stampa(vettore);
@@ -93,12 +93,23 @@ public class App {
             return false;
         }
 
-        // inserisco il nuovo valore
-        v[posizione] = nuovoValore;
+        // controllo se c'è spazio
+        if (dim < DIM_MAX) {
+            // sposto i valori a destra
+            for (int i = dim; i > posizione; i--) {
+                v[i] = v[i - 1];
+            }
 
+            // inserisco il nuovo valore
+            v[posizione] = nuovoValore;
 
-        // restituisco true
-        return true;
+            // aggiorno la dimensione
+            dim++;
+
+            return true;
+        } else {
+            return false;
+        }
 
     }
 
