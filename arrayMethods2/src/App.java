@@ -1,4 +1,3 @@
-
 import java.util.Scanner;
 
 public class App {
@@ -18,7 +17,6 @@ public class App {
         // System.out.println(Arrays.toString(vettore));
         stampa(vettore);
 
-        System.out.println("Inserisci prima il numero e poi la sua posizione all'interno del vettore");
         appendiValore(vettore, 1);
         appendiValore(vettore, 2);
         appendiValore(vettore, 3);
@@ -65,7 +63,7 @@ public class App {
 
         // vedo se c'è spazio
         if (dim < DIM_MAX) {
-
+            System.out.println("Non c'è spazio");
             // inserisco il valore
             v[dim] = nuovo;
 
@@ -90,6 +88,7 @@ public class App {
     static boolean nuovoElemento(int[] v, int nuovoValore, int posizione) {
         // controllo se la posizione è valida
         if (posizione < 0 || posizione > dim) {
+            System.out.println("Posizione non valida");
             return false;
         }
 
@@ -108,6 +107,7 @@ public class App {
 
             return true;
         } else {
+            System.out.println("Non c'è spazio");
             return false;
         }
 
