@@ -40,17 +40,21 @@ public class App {
      */
     //visualizzare il vettore
     static void stampa(int[] v) {
+        // stampo l'apertura dell'array
         System.out.print("[");
 
+        // ciclo per stampare tutti gli elementi
         for (int i = 0; i < dim; i++) {
             System.out.print(v[i] + " ");
         }
 
+        // stampo la chiusura dell'array
         System.out.println("]");
 
     }
 
     // inserire valori nel vettore
+
     /**
      * Inserisce un nuovo valore in coda al vettore
      *
@@ -70,9 +74,12 @@ public class App {
             // aggiorno la dimensione
             dim++;
 
+            // restituzione del valore
             return true;
         } else {
+            // non c'è spazio
             System.out.println("Non c'è spazio");
+            // restituzione del valore
             return false;
         }
 
