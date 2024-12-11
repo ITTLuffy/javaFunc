@@ -21,16 +21,12 @@ public class App {
             appendiValore(vettore, 2);
             appendiValore(vettore, 3);
             appendiValore(vettore, 56);
-            // nuovo elemento, per utilizzare il metodo
-            nuovoElemento(vettore, 1, 4);
-
             stampa(vettore);
 
-            for (int i = 0; i < dim; i++) {
-                System.out.println("Inserisci la posizione");
-                elimina(vettore, in.nextInt());
-                stampa(vettore);
-            }
+            // funzione cerca
+            System.out.println("Inserisci il valore da cercare");
+            cerca(vettore, in.nextInt());
+
         }
 
     }
@@ -87,6 +83,7 @@ public class App {
      * @param posizione posizione in cui inserire il nuovo valore
      * @return esito dell'inserimento
      */
+    /*
     static boolean nuovoElemento(int[] v, int nuovoValore, int posizione) {
         // controllo se la posizione è valida
         if (posizione < 0 || posizione > dim) {
@@ -114,7 +111,15 @@ public class App {
         }
 
     }
-
+     */
+    /**
+     * Elimina un valore in una posizione specifica del vettore
+     *
+     * @param v vettore da modificare
+     * @param pos posizione in cui eliminare il valore
+     * @return esito dell'eliminazione
+     */
+    /*
     static boolean elimina(int[] v, int pos) {
         for (int i = pos + 1; i < dim; i++) {
             v[i - 1] = v[i];
@@ -124,6 +129,25 @@ public class App {
 
         return true;
 
+    }  
+     */
+    /**
+     * Cerca un valore nel vettore
+     *
+     * @param v vettore in cui cercare
+     * @param valore valore da cercare
+     * @return true se il valore è presente, false altrimenti
+     */
+    static boolean cerca(int[] v, int valore) {
+
+        for (int i = 0; i < dim; i++) {
+            if (v[i] == valore) {
+                System.out.println("Valore presente in posizione " + i);
+                return true;
+            }
+        }
+        System.err.println("Valore non presente");
+        return false;
     }
 
 }
