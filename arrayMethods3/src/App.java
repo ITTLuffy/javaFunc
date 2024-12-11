@@ -25,8 +25,8 @@ public class App {
         stampa(vettore);
 
         for (int i = 0; i < dim; i++) {
-            System.out.println("Inserisci il la posizione del vettore che vuoi rimuovere");
-            nuovoElemento(vettore, in.nextInt());
+            System.out.println("Inserisci la posizione");
+            elimina(vettore, in.nextInt());
             stampa(vettore);
         }
 
@@ -86,7 +86,7 @@ public class App {
      * @param posizione posizione in cui inserire il nuovo valore
      * @return esito dell'inserimento
      */
-    static boolean nuovoElemento(int[] v, int posizione) {
+    static boolean nuovoElemento(int[] v, int nuovoValore, int posizione) {
         // controllo se la posizione è valida
         if (posizione < 0 || posizione > dim) {
             System.out.println("Posizione non valida");
@@ -94,18 +94,35 @@ public class App {
         }
 
         // controllo se c'è spazio
-        // rimuovo i valori
-        for (int i = dim; i > posizione; i--) {
-            v[i] = v[i - 1];
+        if (dim < DIM_MAX) {
+            // sposto i valori a destra
+            for (int i = dim; i > posizione; i--) {
+                v[i] = v[i - 1];
+            }
+
+            // inserisco il nuovo valore
+            v[posizione] = nuovoValore;
+
+            // aggiorno la dimensione
+            dim++;
+
+            return true;
+        } else {
+            System.out.println("Non c'è spazio");
+            return false;
         }
 
-        // inserisco il nuovo valore
-        v[posizione] = 0;
+    }
 
-        // aggiorno la dimensione
+    static boolean elimina(int[] v, int pos) {
+        for (int i = pos+1; i < dim; i++) {
+            v[i-1] = v[i];
+        }
+
         dim--;
 
         return true;
+
     }
 
 }
