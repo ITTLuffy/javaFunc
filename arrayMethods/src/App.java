@@ -10,27 +10,25 @@ public class App {
     static final int DIM_MAX = 20;
 
     public static void main(String[] args) throws Exception {
-        // variabili locali
-        Scanner in = new Scanner(System.in);
-
-        int[] vettore = new int[DIM_MAX];
-
-        // System.out.println(Arrays.toString(vettore));
-        stampa(vettore);
-
-        appendiValore(vettore, 1); // chiamata di func  
-        appendiValore(vettore, 2);
-        appendiValore(vettore, 3);
-        appendiValore(vettore, 4);
-        stampa(vettore);
-
-        for (int i = 0; i < dim; i++) {
-            System.out.println("Inserisci il valore e la posizione in cui vuoi inserirlo");
-            nuovoElemento(vettore, in.nextInt(), in.nextInt());
+        try ( // variabili locali
+            Scanner in = new Scanner(System.in)) {
+            int[] vettore = new int[DIM_MAX];
+            
+            // System.out.println(Arrays.toString(vettore));
             stampa(vettore);
+            
+            appendiValore(vettore, 1); // chiamata di func
+            appendiValore(vettore, 2);
+            appendiValore(vettore, 3);
+            appendiValore(vettore, 4);
+            stampa(vettore);
+            
+            for (int i = 0; i < dim; i++) {
+                System.out.println("Inserisci il valore e la posizione in cui vuoi inserirlo");
+                nuovoElemento(vettore, in.nextInt(), in.nextInt());
+                stampa(vettore);
+            }
         }
-
-        in.close();
 
     }
 
