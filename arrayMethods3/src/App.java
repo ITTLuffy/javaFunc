@@ -18,15 +18,15 @@ public class App {
         // System.out.println(Arrays.toString(vettore));
         stampa(vettore);
 
-        appendiValore(vettore, 1); // chiamata di func  
+        appendiValore(vettore, 1);
         appendiValore(vettore, 2);
         appendiValore(vettore, 3);
-        appendiValore(vettore, 4);
+        appendiValore(vettore, 56);
         stampa(vettore);
 
         for (int i = 0; i < dim; i++) {
-            System.out.println("Inserisci il valore e la posizione in cui vuoi inserirlo");
-            nuovoElemento(vettore, in.nextInt(), in.nextInt());
+            System.out.println("Inserisci il la posizione del vettore che vuoi rimuovere");
+            nuovoElemento(vettore, in.nextInt());
             stampa(vettore);
         }
 
@@ -41,15 +41,12 @@ public class App {
      */
     //visualizzare il vettore
     static void stampa(int[] v) {
-        // stampo l'apertura dell'array
         System.out.print("[");
 
-        // ciclo per stampare tutti gli elementi
         for (int i = 0; i < dim; i++) {
             System.out.print(v[i] + " ");
         }
 
-        // stampo la chiusura dell'array
         System.out.println("]");
 
     }
@@ -67,19 +64,15 @@ public class App {
 
         // vedo se c'è spazio
         if (dim < DIM_MAX) {
-
+            System.out.println("Non c'è spazio");
             // inserisco il valore
             v[dim] = nuovo;
 
             // aggiorno la dimensione
             dim++;
 
-            // restituzione del valore
             return true;
         } else {
-            // non c'è spazio
-            System.err.println("Non c'è spazio");
-            // restituzione del valore
             return false;
         }
 
@@ -93,19 +86,26 @@ public class App {
      * @param posizione posizione in cui inserire il nuovo valore
      * @return esito dell'inserimento
      */
-    static boolean nuovoElemento(int[] v, int nuovoValore, int posizione) {
+    static boolean nuovoElemento(int[] v, int posizione) {
         // controllo se la posizione è valida
         if (posizione < 0 || posizione > dim) {
-            System.err.println("Posizione non valida");
+            System.out.println("Posizione non valida");
             return false;
         }
 
+        // controllo se c'è spazio
+        // rimuovo i valori
+        for (int i = dim; i > posizione; i--) {
+            v[i] = v[i - 1];
+        }
+
         // inserisco il nuovo valore
-        v[posizione] = nuovoValore;
+        v[posizione] = 0;
 
-        // restituisco true
+        // aggiorno la dimensione
+        dim--;
+
         return true;
-
     }
 
 }

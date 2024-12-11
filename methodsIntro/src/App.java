@@ -17,29 +17,30 @@ public class App {
             int nInserito = in.nextInt();
 
             switch (nInserito) {
-                case 1:
+                case 1 -> {
                     System.out.println("Inserisci due numeri");
                     int somma = addizione(in.nextInt(), in.nextInt());
                     System.out.println(somma);
-                    break;
-                case 2:
+                }
+                case 2 -> {
                     System.out.println("Inserisci due numeri");
                     int somma2 = sottrazione(in.nextInt(), in.nextInt());
                     System.out.println(somma2);
-                    break;
-                case 3:
+                }
+                case 3 -> {
                     System.out.println("Inserisci due numeri");
                     float somma3 = divisione(in.nextFloat(), in.nextInt());
                     System.out.println(somma3);
-                    break;
-                case 4:
+                }
+                case 4 -> {
                     System.out.println("Inserisci due numeri");
                     int somma4 = moltiplicazione(in.nextInt(), in.nextInt());
                     System.out.println(somma4);
-                    break;
-                case 0:
+                }
+                case 0 -> {
                     System.err.println("Uscita");
                     sentinella = false;
+                }
             }
 
         }
