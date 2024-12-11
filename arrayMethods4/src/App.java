@@ -26,7 +26,10 @@ public class App {
             // funzione cerca
             System.out.println("Inserisci il valore da cercare");
             cerca(vettore, in.nextInt());
-
+            
+            // funzione cercaPosizione
+            System.out.println("Inserisci il valore da cercare");
+            cercaPosizione(vettore, in.nextInt());
         }
 
     }
@@ -146,8 +149,21 @@ public class App {
                 return true;
             }
         }
-        System.err.println("Valore non presente");
+        System.err.println("-1");
         return false;
+    }
+
+    static int cercaPosizione(int[] v, int valore) {
+        for (int i = 0; i < dim; i++) {
+            if (v[i] == valore) {
+                System.out.println("Valore presente in posizione " + i);
+                return i;
+            }
+            
+        }
+        System.out.println("-1");
+        return -1;
+
     }
 
 }
