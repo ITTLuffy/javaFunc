@@ -1,3 +1,4 @@
+
 import java.util.Scanner;
 
 public class App {
@@ -6,6 +7,7 @@ public class App {
         System.out.println("Inserisci un numero DISPARI");
         int n = in.nextInt();
         conoRovescio(n);
+        in.close();
     }
 
     /**
@@ -28,12 +30,13 @@ public class App {
                     System.out.print(" ");
                 }
                 contaSpa++;
+                // per asterischi
                 for (int k = 0; k < contaCar; k++) {
                     System.out.print("*");
                 }
                 contaCar-=2;
+                // a capo
                 System.out.println(" ");
-    
             }    
             return true;
 
@@ -44,4 +47,5 @@ public class App {
         }
 
     }
+    
 }
