@@ -29,6 +29,9 @@ public class exercisesMethods {
             System.out.println(Arrays.toString(numeri));
             tornaArray(numeri);
             System.out.println(Arrays.toString(numeri));
+
+            cercaArray(numeri, n);
+            System.out.println(Arrays.toString(numeri));
         }
 
     }
@@ -84,9 +87,19 @@ public class exercisesMethods {
             if (v[i] % 2 == 0) {
                 v[i] = 0;
             }
-
         }
         return v;
+    }
+
+    public static boolean cercaArray(int[] v, int n) {
+        for (int i = 0; i < v.length; i++) {
+            if (v[i] == n) {
+                System.out.println("Numero trovato");
+                return true;
+            }
+        }
+        System.out.println("Numero non trovato");
+        return false;
     }
 
 }
