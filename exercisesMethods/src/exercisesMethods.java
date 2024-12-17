@@ -92,6 +92,7 @@ public class exercisesMethods {
     }
 
     public static boolean cercaArray(int[] v, int n) {
+        /*
         for (int i = 0; i < v.length; i++) {
             if (v[i] == n) {
                 System.out.println("Numero trovato");
@@ -99,6 +100,14 @@ public class exercisesMethods {
             }
         }
         System.out.println("Numero non trovato");
+        return false;
+        */
+        for (int i : v) {
+            if (v[i] == n) {
+                System.out.println("Numero trovato");
+                return true;
+            }
+        }
         return false;
     }
 
