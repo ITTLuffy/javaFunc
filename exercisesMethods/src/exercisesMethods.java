@@ -32,6 +32,8 @@ public class exercisesMethods {
 
             cercaArray(numeri, n);
             System.out.println(Arrays.toString(numeri));
+
+            immagine();
         }
 
     }
@@ -101,7 +103,7 @@ public class exercisesMethods {
         }
         System.out.println("Numero non trovato");
         return false;
-        */
+         */
         for (int i : v) {
             if (v[i] == n) {
                 System.out.println("Numero trovato");
@@ -111,4 +113,22 @@ public class exercisesMethods {
         return false;
     }
 
+    public static void immagine() {
+        String s = "";
+        String finale = "";
+        String finaleFinale = "";
+        for (int i = 0; i < 10; i++) {
+            s += i;
+            finaleFinale += s;
+            System.out.println(finaleFinale);
+        }
+        for (int k = 10; k > 0; k--) {
+            finale += "0";
+            finaleFinale += finale;
+            System.out.println(finaleFinale);
+        }
+
+        
+    }
 }
+
