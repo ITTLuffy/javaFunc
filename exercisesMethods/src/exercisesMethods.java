@@ -26,7 +26,7 @@ public class exercisesMethods {
             for (int i = 0; i < numeri.length; i++) {
                 numeri[i] = r.nextInt(1, 5);
             }
-            System.out.println(Arrays.toString(numeri));    
+            System.out.println(Arrays.toString(numeri));
             tornaArray(numeri);
             System.out.println(Arrays.toString(numeri));
         }
@@ -86,7 +86,6 @@ public class exercisesMethods {
             }
 
         }
-
         return v;
     }
 
