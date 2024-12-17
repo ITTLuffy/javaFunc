@@ -115,20 +115,16 @@ public class exercisesMethods {
 
     public static void immagine() {
         String s = "";
-        String finale = "";
-        String finaleFinale = "";
         for (int i = 0; i < 10; i++) {
             s += i;
-            finaleFinale += s;
-            System.out.println(finaleFinale);
-        }
-        for (int k = 10; k > 0; k--) {
-            finale += "0";
-            finaleFinale += finale;
-            System.out.println(finaleFinale);
+            System.out.print(s);
+            int zeri = (10 - i);
+            while (zeri > 0) {
+                System.out.print(0);
+                zeri--;
+            }
         }
 
-        
     }
-}
 
+}
