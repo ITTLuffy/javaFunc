@@ -5,10 +5,9 @@ import java.util.Scanner;
 
 public class exercisesMethods {
 
-    /*
-    Creare un metodo che prenda come argomento un numero intero e stampi 
-    a video i 10 numeri successivi (fai l’esercizio sia con ciclo for che con while).
-     */
+    // dimensione array es. 9
+    public static int dim = 0;
+
     public static void main(String[] args) throws Exception {
         Random r = new Random();
 
@@ -23,7 +22,6 @@ public class exercisesMethods {
             stampaArray(vettore, n);
             System.out.println(Arrays.toString(vettore));
 
-            
             // metodo per esercizio 4
             tabellina(n);
 
@@ -32,7 +30,7 @@ public class exercisesMethods {
             // metodo per esercizio 5
             System.out.println("Inserisci due numeri");
             minore(in.nextInt(), in.nextInt());
-            
+
             // metodo per esercizio 6
             System.out.println("Inserisci due stringhe");
             uguale(in.next(), in.next());
@@ -46,12 +44,17 @@ public class exercisesMethods {
             tornaArray(numeri);
             System.out.println(Arrays.toString(numeri));
 
-
+            // metodo per esercizio 8
             cercaArray(numeri, n);
             System.out.println(Arrays.toString(numeri));
 
-            immagine();
+            // metodo per esercizio 9
+            int[] a = {0, 1, 2, 7, 4, 5};
+            System.out.println(Arrays.toString(a));
+            int[] b = filtra(a, n);
+            System.out.println(Arrays.toString(b));
 
+            immagine();
 
             in.close();
 
@@ -107,7 +110,7 @@ public class exercisesMethods {
 
     public static void tabellina(int n) { // metodo per esercizio 4
         System.out.println("Tabellina del " + n);
-        for(int i = 0; i <= n*10; i++) {
+        for (int i = 0; i <= n * 10; i++) {
             if (i % n == 0) {
                 System.out.print(i);
                 System.out.print(" ");
@@ -124,14 +127,13 @@ public class exercisesMethods {
     }
 
     public static boolean uguale(String prima, String seconda) { // metodo per esercizio 6
-        if(prima.equals(seconda)) {
+        if (prima.equals(seconda)) {
             System.out.println("Uguali");
             return true;
         } else {
             return false;
         }
     }
-
 
     public static int[] tornaArray(int[] v) { // metodo per esercizio 7
         for (int i = 0; i < v.length; i++) {
@@ -142,10 +144,8 @@ public class exercisesMethods {
         return v;
     }
 
-
-
     public static boolean cercaArray(int[] v, int n) { // metodo per esercizio 8
-            for (int i : v) {
+        for (int i : v) {
             if (v[i] == n) {
                 System.out.println("Numero trovato");
                 return true;
@@ -154,7 +154,36 @@ public class exercisesMethods {
         return false;
     }
 
-    public static void immagine() {
+    public static int[] filtra(int[] a, int k) { // metodo per esercizio 9
+        // Conta il numero di elementi divisibili per k
+        int c = 0;
+        for (int i : a) {
+            if (i % k == 0) {
+                c++;
+            }
+        }
+
+        // Crea un nuovo array con la dimensione uguale al numero di elementi contati
+        int[] b = new int[c];
+        int j = 0;
+        for (int i : a) {
+            if (i % k == 0) {
+                b[j] = i;
+            }
+        }
+        return b;
+    }
+
+    public static void stampaFormaVettore(int[] v) { // metodo 2 per esercizio 9 (UNIVERSALE)
+        System.out.print("[");
+        for (int i = 0; i < v.length; i++) {
+            System.out.print(v[i] + " ");
+        }
+        System.out.println("]");
+    }
+
+
+public static void immagine() {
         String s = "";
         for (int i = 0; i < 10; i++) {
             s += i;
