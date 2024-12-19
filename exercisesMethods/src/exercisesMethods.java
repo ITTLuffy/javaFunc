@@ -37,6 +37,7 @@ public class exercisesMethods {
             System.out.println("Inserisci due stringhe");
             uguale(in.next(), in.next());
 
+            // metodo per esercizio 7
             int[] numeri = new int[5];
             for (int i = 0; i < numeri.length; i++) {
                 numeri[i] = r.nextInt(1, 5);
@@ -44,6 +45,7 @@ public class exercisesMethods {
             System.out.println(Arrays.toString(numeri));
             tornaArray(numeri);
             System.out.println(Arrays.toString(numeri));
+
 
             cercaArray(numeri, n);
             System.out.println(Arrays.toString(numeri));
@@ -131,7 +133,7 @@ public class exercisesMethods {
     }
 
 
-    public static int[] tornaArray(int[] v) {
+    public static int[] tornaArray(int[] v) { // metodo per esercizio 7
         for (int i = 0; i < v.length; i++) {
             if (v[i] % 2 == 0) {
                 v[i] = 0;
@@ -140,18 +142,10 @@ public class exercisesMethods {
         return v;
     }
 
-    public static boolean cercaArray(int[] v, int n) {
-        /*
-        for (int i = 0; i < v.length; i++) {
-            if (v[i] == n) {
-                System.out.println("Numero trovato");
-                return true;
-            }
-        }
-        System.out.println("Numero non trovato");
-        return false;
-         */
-        for (int i : v) {
+
+
+    public static boolean cercaArray(int[] v, int n) { // metodo per esercizio 8
+            for (int i : v) {
             if (v[i] == n) {
                 System.out.println("Numero trovato");
                 return true;
