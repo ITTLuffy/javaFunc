@@ -22,13 +22,20 @@ public class exercisesMethods {
             int[] vettore = new int[10];
             stampaArray(vettore, n);
             System.out.println(Arrays.toString(vettore));
-            in.close();
 
             
             // metodo per esercizio 4
             tabellina(n);
 
-            System.out.println("\n");
+            System.out.println(" ");
+
+            // metodo per esercizio 5
+            System.out.println("Inserisci due numeri");
+            minore(in.nextInt(), in.nextInt());
+            
+            // metodo per esercizio 6
+            System.out.println("Inserisci due stringhe");
+            uguale(in.next(), in.next());
 
             int[] numeri = new int[5];
             for (int i = 0; i < numeri.length; i++) {
@@ -42,6 +49,10 @@ public class exercisesMethods {
             System.out.println(Arrays.toString(numeri));
 
             immagine();
+
+
+            in.close();
+
         }
 
     }
@@ -102,7 +113,22 @@ public class exercisesMethods {
         }
     }
 
-    
+    public static void minore(int n1, int n2) { // metodo per esercizio 5
+        if (n1 < n2) {
+            System.out.println("Minore " + n1);
+        } else {
+            System.out.println("Minore " + n2);
+        }
+    }
+
+    public static boolean uguale(String prima, String seconda) { // metodo per esercizio 6
+        if(prima.equals(seconda)) {
+            System.out.println("Uguali");
+            return true;
+        } else {
+            return false;
+        }
+    }
 
 
     public static int[] tornaArray(int[] v) {
