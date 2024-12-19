@@ -58,7 +58,6 @@ public class exercisesMethods {
             int[] bin = new int[8];
             binario(n, bin);
             System.out.println(Arrays.toString(bin));
-            
 
             immagine();
 
@@ -198,17 +197,17 @@ public class exercisesMethods {
         return v;
     }
 
-
-public static void immagine() {
+    public static void immagine() {
         String s = "";
-        for (int i = 0; i < 10; i++) {
+        for (int i = 1; i < 10; i++) {
             s += i;
             System.out.print(s);
-            int zeri = (10 - i);
+            int zeri = (9 - i);
             while (zeri > 0) {
                 System.out.print(0);
                 zeri--;
             }
+            System.out.println();
         }
 
     }
