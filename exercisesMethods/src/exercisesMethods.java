@@ -54,6 +54,12 @@ public class exercisesMethods {
             int[] b = filtra(a, n);
             System.out.println(Arrays.toString(b));
 
+            // metodo per esercizio 10
+            int[] bin = new int[8];
+            binario(n, bin);
+            System.out.println(Arrays.toString(bin));
+            
+
             immagine();
 
             in.close();
@@ -180,6 +186,16 @@ public class exercisesMethods {
             System.out.print(v[i] + " ");
         }
         System.out.println("]");
+    }
+
+    public static int[] binario(int n, int[] v) { // metodo per esercizio 10
+        int i = 7;
+        while (n > 0) {
+            v[i] = n % 2;
+            n = n / 2;
+            i--;
+        }
+        return v;
     }
 
 
