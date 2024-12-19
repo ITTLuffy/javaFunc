@@ -15,12 +15,20 @@ public class exercisesMethods {
         try (Scanner in = new Scanner(System.in)) {
             System.out.println("Inserisci un numero");
             int n = in.nextInt();
-            stampa(n);
-            stampaContrario(n);
+            stampa(n); // metodo per esercizio 1
+            stampaContrario(n); // metodo per esercizio 2
+
+            // metodo per esercizio 3
             int[] vettore = new int[10];
             stampaArray(vettore, n);
             System.out.println(Arrays.toString(vettore));
             in.close();
+
+            
+            // metodo per esercizio 4
+            tabellina(n);
+
+            System.out.println("\n");
 
             int[] numeri = new int[5];
             for (int i = 0; i < numeri.length; i++) {
@@ -38,7 +46,7 @@ public class exercisesMethods {
 
     }
 
-    public static void stampa(int n) {
+    public static void stampa(int n) { // metodo per esercizio 1
         System.out.println("Numeri successivi");
         for (int i = n + 1; i <= n + 10; i++) {
             System.out.println(i);
@@ -51,7 +59,7 @@ public class exercisesMethods {
 
     }
 
-    public static void stampaContrario(int n) {
+    public static void stampaContrario(int n) { // metodo per esercizio 2
         System.out.println("Numeri precedenti");
         for (int i = n - 1; i >= n - 10; i--) {
             System.out.println(i);
@@ -65,7 +73,7 @@ public class exercisesMethods {
 
     }
 
-    public static void stampaArray(int[] v, int n) {
+    public static void stampaArray(int[] v, int n) { // metodo per esercizio 3
         int j = 0;
         for (int i = n + 1; i <= n + 10; i++) {
             System.out.println(i);
@@ -83,6 +91,19 @@ public class exercisesMethods {
         }
 
     }
+
+    public static void tabellina(int n) { // metodo per esercizio 4
+        System.out.println("Tabellina del " + n);
+        for(int i = 0; i <= n*10; i++) {
+            if (i % n == 0) {
+                System.out.print(i);
+                System.out.print(" ");
+            }
+        }
+    }
+
+    
+
 
     public static int[] tornaArray(int[] v) {
         for (int i = 0; i < v.length; i++) {
