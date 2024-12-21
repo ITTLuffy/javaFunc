@@ -1,31 +1,62 @@
-import java.util.Arrays;
+
 import java.util.Random;
+import java.util.Scanner;
 
 public class holidayHomework {
 
-    public static int dim = 4;
-    public static final int MAX_DIM = 20;
+    // variabili globali
+    static int dim = 0; // dimensione logica del vettore
+    static int DIM_MAX = 15; // dimensione massima del vettore
+    static Scanner in = new Scanner(System.in); // Scanner per l'input
+    static Random r = new Random(); // Random per la generazione di numeri casuali
 
     public static void main(String[] args) throws Exception {
-        Random r = new Random();
-        int[] v = new int[dim];
-        for (int i = 0; i < v.length; i++) {
-            riempiVettore(v, r.nextInt(0, 4), i);
+        int[] v = new int[DIM_MAX]; // vettore con dimensione massima 
+
+        System.out.println("Inserisci il numero di sfere con cui vuoi giocare");
+        int dimSfere = in.nextInt();
+        // riempio il vettore 
+        for (int i = 0; i < dimSfere; i++) {
+            riempiVettore(v, r.nextInt(0, 4));
         }
-        System.out.println(Arrays.toString(v));
+
+        stampa(v);
+
+        System.out.println("Inserisci la posizione della sfera da eliminare");
+        togliSfera(v, in.nextInt());
+        stampa(v);
     }
 
-    public static void riempiVettore(int[] v, int colore, int pos) {
+    public static void riempiVettore(int[] v, int colore) {
         // 4 colori, associati ad un numero
         int rosso = 0;
         int blu = 1;
-        int giallo = 2; 
-        int verde = 3;   
+        int giallo = 2;
+        int verde = 3;
 
-        for (int i : v) {
-            v[pos] = colore;
-            dim++;
-        }
+        v[dim] = colore;
+        dim++;
 
     }
+
+    public static void stampa(int[] v) {
+        System.out.print("[");
+        for (int i = 0; i < dim; i++) {
+            System.out.print(v[i] + " ");
+        }
+        System.out.println("]");
+    }
+
+    public static void togliSfera(int v[], int pos) {
+        if (pos < 0 || pos >= dim) {
+            System.err.println("Posizione non valida");
+            System.exit(0);
+        }
+
+        for (int i = pos + 1; i < dim; i++) {
+            v[i - 1] = v[i];
+        }
+        dim--;
+    }
+
 }
