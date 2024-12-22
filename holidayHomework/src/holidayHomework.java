@@ -28,6 +28,13 @@ public class holidayHomework {
         togliSfera(v, in.nextInt());
         // stampo il risultato
         stampa(v);
+
+        System.out.println("Inserisci la posizione della sfera da eliminare");
+        // elimino la sfera
+        togliSfera(v, in.nextInt());
+        // stampo il risultato
+        stampa(v);
+
     }
 
     /**
@@ -44,7 +51,7 @@ public class holidayHomework {
         int blu = 1;
         int giallo = 2;
         int verde = 3;
-        */
+         */
         // inserisco il colore nel vettore 
         v[dim] = colore;
         // incremento la posizione logica
@@ -76,13 +83,28 @@ public class holidayHomework {
             System.err.println("Posizione non valida");
             System.exit(0);
         }
-
-        // sposto tutti gli elementi a sinistra
-        for (int i = pos + 1; i < dim; i++) {
-            v[i - 1] = v[i];
+        // quando ci sono due sfere uguali vicine
+        if (v[pos] == v[pos + 1]) { 
+            for (int i = pos + 2; i < dim; i++) {
+                v[i - 2] = v[i]; // sposto le sfere
+            }
+            // decremento la dimensione logica
+            dim -= 2; 
+        } else if (v[pos] == v[pos - 1]) { // sposto le sfere
+            for (int i = pos + 1; i < dim; i++) {
+                v[i - 2] = v[i];
+            }
+            // decremento la dimensione logica
+            dim -= 2;
+        } else {
+            // sposto tutti gli elementi a sinistra
+            for (int i = pos + 1; i < dim; i++) {
+                v[i - 1] = v[i];
+            }
+            // decremento la dimensione logica
+            dim--;
         }
-        // decremento la dimensione logica
-        dim--;
+
     }
 
 }
