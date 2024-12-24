@@ -12,6 +12,8 @@ public class holidayHomework {
     public static void main(String[] args) throws Exception {
         int[] v = new int[DIM_MAX]; // vettore con dimensione massima 
 
+        int tentativi = 0;
+
         System.out.println("Inserisci il numero di sfere con cui vuoi giocare");
         int dimSfere = in.nextInt(); // dimensione array iniziale
         // riempio il vettore 
@@ -25,33 +27,40 @@ public class holidayHomework {
         esplosione(v);
         stampa(v);
 
+        // esplosione
         esplosione(v);
         stampa(v);
 
-        System.out.println("Vuoi simulare una mossa? (s/n)");
-        char n = in.next().charAt(0);
-        if (n == 's') {
-            System.out.println("Inserisci la posizione da simulare");
-            simulaMossa(v, in.nextInt());
+        boolean fine = false;
+
+        while (!fine) {
+            esplosione(v);
+            stampa(v);
+
+            if (dim == 0) {
+                fine = true;
+                System.out.println("Hai impiegato " + tentativi + " tentativi");
+                break;
+            }
+
+            mossaMigliore(v);
+            
+            System.out.println("Vuoi simulare una mossa? (s/n)");
+            char n = in.next().charAt(0);
+            if (n == 's') {
+                System.out.println("Inserisci la posizione da simulare");
+                simulaMossa(v, in.nextInt());
+            }
+            System.out.println("Inserisci la posizione della sfera da eliminare");
+            // elimino la sfera
+            togliSfera(v, in.nextInt());
+            // stampo il risultato
+            stampa(v);
+
+            tentativi++;
+
         }
 
-        System.out.println("Inserisci la posizione della sfera da eliminare");
-        // elimino la sfera
-        togliSfera(v, in.nextInt());
-        // stampo il risultato
-        stampa(v);
-
-        esplosione(v);
-        stampa(v);
-
-        System.out.println("Inserisci la posizione della sfera da eliminare");
-        // elimino la sfera
-        togliSfera(v, in.nextInt());
-        // stampo il risultato
-        stampa(v);
-
-        esplosione(v);
-        stampa(v);
     }
 
     /**
@@ -150,6 +159,24 @@ public class holidayHomework {
             System.out.println("Fine gioco");
         }
 
+    }
+
+    public static void mossaMigliore(int[] v) {
+        int pos = 0;
+        int max = 0;
+        for (int i = 0; i < dim; i++) {
+            if (v[i] == v[i + 1]) {
+                int j = i;
+                while (j < dim - 1 && v[j] == v[j + 1]) {
+                    j++;
+                }
+                if (j - i + 1 > max) {
+                    max = j - i + 1;
+                    pos = i;
+                }
+            }
+        }
+        System.out.println("La mossa migliore è " + pos);
     }
 
 }
