@@ -1,6 +1,5 @@
 
-import java.util.Random;
-import java.util.Scanner;
+import java.util.*;
 
 public class holidayHomework {
 
@@ -19,8 +18,13 @@ public class holidayHomework {
         for (int i = 0; i < dimSfere; i++) {
             riempiVettore(v, r.nextInt(0, 4));
         }
-
         // stampo il risultato
+        stampa(v);
+
+        // esplosione
+        esplosione(v);
+        stampa(v);
+        esplosione(v);
         stampa(v);
 
         System.out.println("Inserisci la posizione della sfera da eliminare");
@@ -29,12 +33,17 @@ public class holidayHomework {
         // stampo il risultato
         stampa(v);
 
+        esplosione(v);
+        stampa(v);
+
         System.out.println("Inserisci la posizione della sfera da eliminare");
         // elimino la sfera
         togliSfera(v, in.nextInt());
         // stampo il risultato
         stampa(v);
 
+        esplosione(v);
+        stampa(v);
     }
 
     /**
@@ -71,6 +80,32 @@ public class holidayHomework {
         System.out.println("]");
     }
 
+    public static void esplosione(int[] v) {
+        System.out.println("Esplosione");
+        // contatore per scorrere il vettore
+        int i = 0;
+        // finchè non ho finito il vettore
+        while (i < dim - 1) {
+            // se ci sono due sfere uguali
+            if (v[i] == v[i + 1]) {
+                int j = i;
+                while (j < dim - 1 && v[j] == v[j + 1]) {
+                    j++; // conto quante sfere uguali ci sono
+                }
+                // Sposta gli elementi a sinistra
+                for (int k = j + 1; k < dim; k++) {
+                    v[k - (j - i + 1)] = v[k];
+                }
+                // Aggiorna la dimensione logica
+                dim -= (j - i + 1);
+            } else {
+                i++;
+            }
+
+        }
+
+    }
+
     /**
      * Elimina una sfera dal vettore
      *
@@ -80,29 +115,23 @@ public class holidayHomework {
     public static void togliSfera(int v[], int pos) {
         // controllo che la posizione sia valida
         if (pos < 0 || pos >= dim) {
-            System.err.println("Posizione non valida");
-            System.exit(0);
+            System.out.println("Posizione non valida");
         }
-        // quando ci sono due sfere uguali vicine
-        if (v[pos] == v[pos + 1]) { 
-            for (int i = pos + 2; i < dim; i++) {
-                v[i - 2] = v[i]; // sposto le sfere
+        
+        // Sposta gli elementi a sinistra
+        for (int i = pos; i < dim - 1; i++) {
+            v[i] = v[i + 1];
+        }
+        // Aggiorna la dimensione logica
+        dim--;
+    }
+
+    public static void simulaMossa(int[] v, int pos) {
+        System.out.println("Inserisci una posizione");
+        for (int i = pos; i < dim; i++) {
+            if (v[pos] == v[pos] + 1) {
+
             }
-            // decremento la dimensione logica
-            dim -= 2; 
-        } else if (v[pos] == v[pos - 1]) { // sposto le sfere
-            for (int i = pos + 1; i < dim; i++) {
-                v[i - 2] = v[i];
-            }
-            // decremento la dimensione logica
-            dim -= 2;
-        } else {
-            // sposto tutti gli elementi a sinistra
-            for (int i = pos + 1; i < dim; i++) {
-                v[i - 1] = v[i];
-            }
-            // decremento la dimensione logica
-            dim--;
         }
 
     }
