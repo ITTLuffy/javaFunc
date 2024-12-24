@@ -146,7 +146,6 @@ public class holidayHomework {
             } else {
                 System.out.println("La mossa non porterà ad un'esplosione");
             }
-
         } else {
             System.out.println("Fine gioco");
         }
