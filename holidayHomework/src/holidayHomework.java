@@ -24,8 +24,16 @@ public class holidayHomework {
         // esplosione
         esplosione(v);
         stampa(v);
+
         esplosione(v);
         stampa(v);
+
+        System.out.println("Vuoi simulare una mossa? (s/n)");
+        char n = in.next().charAt(0);
+        if (n == 's') {
+            System.out.println("Inserisci la posizione da simulare");
+            simulaMossa(v, in.nextInt());
+        }
 
         System.out.println("Inserisci la posizione della sfera da eliminare");
         // elimino la sfera
@@ -80,6 +88,11 @@ public class holidayHomework {
         System.out.println("]");
     }
 
+    /**
+     * Esplosione delle sfere
+     *
+     * @param v vettore
+     */
     public static void esplosione(int[] v) {
         System.out.println("Esplosione");
         // contatore per scorrere il vettore
@@ -117,7 +130,7 @@ public class holidayHomework {
         if (pos < 0 || pos >= dim) {
             System.out.println("Posizione non valida");
         }
-        
+
         // Sposta gli elementi a sinistra
         for (int i = pos; i < dim - 1; i++) {
             v[i] = v[i + 1];
@@ -127,11 +140,15 @@ public class holidayHomework {
     }
 
     public static void simulaMossa(int[] v, int pos) {
-        System.out.println("Inserisci una posizione");
-        for (int i = pos; i < dim; i++) {
-            if (v[pos] == v[pos] + 1) {
-
+        if (dim > 2) {
+            if (v[pos - 1] == v[pos + 1]) {
+                System.out.println("La mossa porterà ad un'esplosione");
+            } else {
+                System.out.println("La mossa non porterà ad un'esplosione");
             }
+
+        } else {
+            System.out.println("Fine gioco");
         }
 
     }
