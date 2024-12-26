@@ -20,21 +20,16 @@ public class holidayHomework {
         for (int i = 0; i < dimSfere; i++) {
             riempiVettore(v, r.nextInt(0, 4));
         }
-        
+
         // stampo il risultato
-        stampa(v);
-
-        // esplosione
-        esplosione(v);
-        stampa(v);
-
-        // esplosione
-        esplosione(v);
         stampa(v);
 
         boolean fine = false;
 
         while (!fine) {
+            esplosione(v);
+            stampa(v);
+
             esplosione(v);
             stampa(v);
 
@@ -44,9 +39,7 @@ public class holidayHomework {
                 break;
             }
 
-            possibiliEsplosioni(v);
-
-            mossaMigliore(v);
+            System.out.println("Mossa migliore " + mossaMigliore(v));
             
             System.out.println("Vuoi simulare una mossa? (s/n)");
             char n = in.next().charAt(0);
@@ -61,7 +54,6 @@ public class holidayHomework {
             stampa(v);
 
             tentativi++;
-
 
         }
 
@@ -107,7 +99,6 @@ public class holidayHomework {
      * @param v vettore
      */
     public static void esplosione(int[] v) {
-        System.out.println("Esplosione");
         // contatore per scorrere il vettore
         int i = 0;
         // finchè non ho finito il vettore
@@ -127,9 +118,7 @@ public class holidayHomework {
             } else {
                 i++;
             }
-
         }
-
     }
 
     /**
@@ -165,34 +154,20 @@ public class holidayHomework {
 
     }
 
-    public static void mossaMigliore(int[] v) {
-        int pos = 0;
-        int max = 0;
-        for (int i = 0; i < dim; i++) {
-            if (v[i] == v[i + 1]) {
-                int j = i;
-                while (j < dim - 1 && v[j] == v[j + 1]) {
-                    j++;
-                }
-                if (j - i + 1 > max) {
-                    max = j - i + 1;
-                    pos = i;
-                }
-            }
-        }
-        System.out.println("La mossa migliore è " + pos);
-    }
-
-    public static int possibiliEsplosioni(int[]v) {
+    public static int mossaMigliore(int[]v) {
         int pos = 0;
         int possibiliEsplosioni = 0;
-        while (pos < dim - 1) {
+        int mossaMigliore = 0;
+        while (pos < dim - 3) {
             if (v[pos] == v[pos + 2]) {
+                mossaMigliore = pos + 1;
                 possibiliEsplosioni++;
             }
             pos++;
         }
-        return possibiliEsplosioni;
+        System.out.println("Possibili esplosioni: " + possibiliEsplosioni);
+        return mossaMigliore;
     }
+
 
 }
