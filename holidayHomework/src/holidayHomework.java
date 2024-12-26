@@ -27,20 +27,23 @@ public class holidayHomework {
         boolean fine = false;
 
         while (!fine) {
+            // esplosioni
             esplosione(v);
             stampa(v);
 
+            // 2 per essere sicuri di non avere sfere attaccate
             esplosione(v);
             stampa(v);
 
-
+            // si vince se il vettore è vuoto e quindi tutte le palline sono state eliminate
             if (dim == 0) {
                 System.out.println("Hai impiegato " + tentativi + " tentativi");
-                break;
+                break; // break per bypassare tutta la parte restante del ciclo
             }
 
             System.out.println("Mossa migliore " + mossaMigliore(v));
-            
+
+            // simulaMossa
             System.out.println("Vuoi simulare una mossa? (s/n)");
             char n = in.next().charAt(0);
             if (n == 's') {
@@ -53,6 +56,7 @@ public class holidayHomework {
             // stampo il risultato
             stampa(v);
 
+            // aumento il numero di tentativi utilizzati
             tentativi++;
 
         }
@@ -86,11 +90,11 @@ public class holidayHomework {
      * @param v vettore da stampare
      */
     public static void stampa(int[] v) {
-        System.out.print("[");
-        for (int i = 0; i < dim; i++) {
+        System.out.print("["); // parentesi quadra iniziale
+        for (int i = 0; i < dim; i++) { // numeri inseriti
             System.out.print(v[i] + " ");
         }
-        System.out.println("]");
+        System.out.println("]"); // parentesi quadra finale
     }
 
     /**
@@ -106,7 +110,7 @@ public class holidayHomework {
             // se ci sono due sfere uguali
             if (v[i] == v[i + 1]) {
                 int j = i; // contatore per scorrere le sfere uguali
-                while (j < dim - 1 && v[j] == v[j + 1]) {
+                while (j < dim - 1 && v[j] == v[j + 1]) { // scorro tutto il vettore
                     j++; // conto quante sfere uguali ci sono
                 }
                 // Sposta gli elementi a sinistra
@@ -141,33 +145,44 @@ public class holidayHomework {
         dim--;
     }
 
+    /**
+     * Simula una mossa
+     *
+     * @param v vettore
+     * @param pos posizione da simulare
+     */
     public static void simulaMossa(int[] v, int pos) {
-        if (dim > 2) {
-            if (v[pos - 1] == v[pos + 1]) {
-                System.out.println("La mossa porterà ad un'esplosione");
+        if (dim > 2 && pos < dim - 3) { // controllo che ci siano almeno 3 sfere e che la posizione sia valida
+            if (v[pos] == v[pos + 2]) { // controllo che le sfere siano uguali
+                System.out.println("La mossa porterà ad un'esplosione"); // stampo il risultato
             } else {
-                System.out.println("La mossa non porterà ad un'esplosione");
+                System.out.println("La mossa non porterà ad un'esplosione"); // stampo il risultato
             }
         } else {
-            System.out.println("Fine gioco");
+            System.out.println("Fine gioco"); // se nessuna delle condizioni è soddisfatta, stampo fine gioco
         }
 
     }
 
-    public static int mossaMigliore(int[]v) {
-        int pos = 0;
-        int possibiliEsplosioni = 0;
+    /**
+     * Calcola la mossa migliore
+     *
+     * @param v vettore
+     * @return posizione della mossa migliore
+     */
+    public static int mossaMigliore(int[] v) {
+        int pos = 0; // posizione
+        int possibiliEsplosioni = 0; // contatore delle possibili esplosioni
         int mossaMigliore = 0;
-        while (pos < dim - 3) {
-            if (v[pos] == v[pos + 2]) {
-                mossaMigliore = pos + 1;
-                possibiliEsplosioni++;
+        while (pos < dim - 3) { // finchè non ho finito il vettore
+            if (v[pos] == v[pos + 2]) { // controllo che le sfere siano uguali
+                mossaMigliore = pos + 1; // la mossa migliore è la posizione + 1
+                possibiliEsplosioni++; // incremento il contatore delle possibili esplosioni
             }
             pos++;
         }
         System.out.println("Possibili esplosioni: " + possibiliEsplosioni);
-        return mossaMigliore;
+        return mossaMigliore; // ritorno la mossa migliore
     }
-
 
 }
