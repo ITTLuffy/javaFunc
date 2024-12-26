@@ -20,6 +20,7 @@ public class holidayHomework {
         for (int i = 0; i < dimSfere; i++) {
             riempiVettore(v, r.nextInt(0, 4));
         }
+        
         // stampo il risultato
         stampa(v);
 
@@ -37,11 +38,13 @@ public class holidayHomework {
             esplosione(v);
             stampa(v);
 
+
             if (dim == 0) {
-                fine = true;
                 System.out.println("Hai impiegato " + tentativi + " tentativi");
                 break;
             }
+
+            possibiliEsplosioni(v);
 
             mossaMigliore(v);
             
@@ -58,6 +61,7 @@ public class holidayHomework {
             stampa(v);
 
             tentativi++;
+
 
         }
 
@@ -110,7 +114,7 @@ public class holidayHomework {
         while (i < dim - 1) {
             // se ci sono due sfere uguali
             if (v[i] == v[i + 1]) {
-                int j = i;
+                int j = i; // contatore per scorrere le sfere uguali
                 while (j < dim - 1 && v[j] == v[j + 1]) {
                     j++; // conto quante sfere uguali ci sono
                 }
@@ -177,6 +181,18 @@ public class holidayHomework {
             }
         }
         System.out.println("La mossa migliore è " + pos);
+    }
+
+    public static int possibiliEsplosioni(int[]v) {
+        int pos = 0;
+        int possibiliEsplosioni = 0;
+        while (pos < dim - 1) {
+            if (v[pos] == v[pos + 2]) {
+                possibiliEsplosioni++;
+            }
+            pos++;
+        }
+        return possibiliEsplosioni;
     }
 
 }
