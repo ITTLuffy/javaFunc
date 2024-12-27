@@ -122,7 +122,9 @@ public class holidayHomework {
             } else {
                 i++;
             }
+
         }
+        
     }
 
     /**
@@ -177,6 +179,9 @@ public class holidayHomework {
         while (pos < dim - 3) { // finchè non ho finito il vettore
             if (v[pos] == v[pos + 2]) { // controllo che le sfere siano uguali
                 mossaMigliore = pos + 1; // la mossa migliore è la posizione + 1
+                possibiliEsplosioni++; // incremento il contatore delle possibili esplosioni
+            } else if (v[pos] == v[pos + 3]) {
+                mossaMigliore = pos + 2; // la mossa migliore è la posizione + 2
                 possibiliEsplosioni++; // incremento il contatore delle possibili esplosioni
             }
             pos++;
