@@ -31,10 +31,6 @@ public class holidayHomework {
             esplosione(v);
             stampa(v);
 
-            // 2 per essere sicuri di non avere sfere attaccate
-            esplosione(v);
-            stampa(v);
-
             // si vince se il vettore è vuoto e quindi tutte le palline sono state eliminate
             if (dim == 0) {
                 System.out.println("Hai impiegato " + tentativi + " tentativi");
@@ -77,7 +73,7 @@ public class holidayHomework {
         int blu = 1;
         int giallo = 2;
         int verde = 3;
-         */
+        */
         // inserisco il colore nel vettore 
         v[dim] = colore;
         // incremento la posizione logica
@@ -103,28 +99,29 @@ public class holidayHomework {
      * @param v vettore
      */
     public static void esplosione(int[] v) {
-        // contatore per scorrere il vettore
-        int i = 0;
-        // finchè non ho finito il vettore
-        while (i < dim - 1) {
-            // se ci sono due sfere uguali
-            if (v[i] == v[i + 1]) {
-                int j = i; // contatore per scorrere le sfere uguali
-                while (j < dim - 1 && v[j] == v[j + 1]) { // scorro tutto il vettore
-                    j++; // conto quante sfere uguali ci sono
+        boolean esploso; // variabile booleana per controllare se è esploso
+        do { // ciclo do-while per controllare se ci sono sfere uguali
+            esploso = false; // inizializzo a false
+            int i = 0; // variabile per la posizione a 0
+            while (i < dim - 1) { // scorro il vettore
+                if (v[i] == v[i + 1]) { // controllo se le sfere sono uguali
+                    int j = i; // contatore per sfere uguali
+                    while (j < dim - 1 && v[j] == v[j + 1]) { // controllo se ci sono sfere uguali
+                        j++; // incremento sfere uguali
+                    }
+                    for (int k = j + 1; k < dim; k++) { // ciclo for per spostare le sfere
+                        v[k - (j - i + 1)] = v[k]; // sposto le sfere
+                    }
+                    dim -= (j - i + 1); // decremento la dimensione logica
+                    esploso = true; // setto a true
+                } else { // se non ci sono sfere uguali
+                    i++; // incremento la posizione
                 }
-                // Sposta gli elementi a sinistra
-                for (int k = j + 1; k < dim; k++) {
-                    v[k - (j - i + 1)] = v[k];
-                }
-                // Aggiorna la dimensione logica
-                dim -= (j - i + 1);
-            } else {
-                i++;
+
             }
 
-        }
-        
+        } while (esploso); // finchè ci sono sfere uguali
+
     }
 
     /**
@@ -176,17 +173,24 @@ public class holidayHomework {
         int pos = 0; // posizione
         int possibiliEsplosioni = 0; // contatore delle possibili esplosioni
         int mossaMigliore = 0;
-        while (pos < dim - 3) { // finchè non ho finito il vettore
-            if (v[pos] == v[pos + 2]) { // controllo che le sfere siano uguali
+        while (pos < dim - 1) { // finchè non ho finito il vettore
+            if (v[pos] == v[pos + 2] && pos < dim - 3) { // controllo che le sfere distanziate da due sfere siano uguali e che la posizione sia valida
                 mossaMigliore = pos + 1; // la mossa migliore è la posizione + 1
                 possibiliEsplosioni++; // incremento il contatore delle possibili esplosioni
-            } else if (v[pos] == v[pos + 3]) {
+            } else if (v[pos] == v[pos + 3] && pos < dim - 4) { // controllo che le sfere distanziate da tre sfere siano uguali e che la posizione sia valida
                 mossaMigliore = pos + 2; // la mossa migliore è la posizione + 2
                 possibiliEsplosioni++; // incremento il contatore delle possibili esplosioni
+            } else if (v[pos] == v[pos + 4] && pos < dim - 5) { // controllo che le sfere distanziate da quattro sfere siano uguali e che la posizione sia valida
+                mossaMigliore = pos + 3; // la mossa migliore è la posizione + 3
+                possibiliEsplosioni++; // incremento il contatore delle possibili esplosioni
+            } else if (v[pos] == v[pos + 5] && pos < dim - 6) { // controllo che le sfere distanziate da cinque sfere siano uguali e che la posizione sia valida
+                mossaMigliore = pos + 4; // la mossa migliore è la posizione + 3
+                possibiliEsplosioni++; // incremento il contatore delle possibili esplosioni
             }
-            pos++;
+            pos++; // incremento la posizione
         }
-        System.out.println("Possibili esplosioni: " + possibiliEsplosioni);
+
+        System.out.println("Possibili esplosioni: " + possibiliEsplosioni); // stampo il numero di possibili esplosioni
         return mossaMigliore; // ritorno la mossa migliore
     }
 
