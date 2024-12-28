@@ -29,7 +29,6 @@ public class holidayHomework {
         while (!fine) {
             // esplosioni
             esplosione(v);
-            stampa(v);
 
             // si vince se il vettore è vuoto e quindi tutte le palline sono state eliminate
             if (dim == 0) {
@@ -121,7 +120,7 @@ public class holidayHomework {
             }
 
         } while (esploso); // finchè ci sono sfere uguali
-
+        stampa(v); // stampo il risultato
     }
 
     /**
@@ -173,23 +172,10 @@ public class holidayHomework {
         int pos = 0; // posizione
         int possibiliEsplosioni = 0; // contatore delle possibili esplosioni
         int mossaMigliore = 0;
-        while (pos < dim - 1) { // finchè non ho finito il vettore
-            if (v[pos] == v[pos + 2] && pos < dim - 3) { // controllo che le sfere distanziate da due sfere siano uguali e che la posizione sia valida
-                mossaMigliore = pos + 1; // la mossa migliore è la posizione + 1
-                possibiliEsplosioni++; // incremento il contatore delle possibili esplosioni
-            } else if (v[pos] == v[pos + 3] && pos < dim - 4) { // controllo che le sfere distanziate da tre sfere siano uguali e che la posizione sia valida
-                mossaMigliore = pos + 2; // la mossa migliore è la posizione + 2
-                possibiliEsplosioni++; // incremento il contatore delle possibili esplosioni
-            } else if (v[pos] == v[pos + 4] && pos < dim - 5) { // controllo che le sfere distanziate da quattro sfere siano uguali e che la posizione sia valida
-                mossaMigliore = pos + 3; // la mossa migliore è la posizione + 3
-                possibiliEsplosioni++; // incremento il contatore delle possibili esplosioni
-            } else if (v[pos] == v[pos + 5] && pos < dim - 6) { // controllo che le sfere distanziate da cinque sfere siano uguali e che la posizione sia valida
-                mossaMigliore = pos + 4; // la mossa migliore è la posizione + 3
-                possibiliEsplosioni++; // incremento il contatore delle possibili esplosioni
-            }
-            pos++; // incremento la posizione
-        }
 
+        while (pos < dim) {
+            pos++;
+        }
         System.out.println("Possibili esplosioni: " + possibiliEsplosioni); // stampo il numero di possibili esplosioni
         return mossaMigliore; // ritorno la mossa migliore
     }
