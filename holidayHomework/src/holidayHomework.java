@@ -1,5 +1,9 @@
-
 import java.util.*;
+
+// progetto pozione Esplosiva
+/* dato che non ho compreso a pieno la consegna e non sembrava avere senso il modo in cui lo stavo facendo (mentre lo spiegava
+    ero con la prof di inglese insieme ad Esposito e Gjerji), ho fatto una versione reinterpretata da me, spero vada bene :)
+*/
 
 public class holidayHomework {
 
@@ -174,6 +178,13 @@ public class holidayHomework {
         int mossaMigliore = 0;
 
         while (pos < dim) {
+            if (v[pos] == v[pos + 2] && pos < dim - 2) { // controllo se le sfere sono uguali
+                possibiliEsplosioni++; // incremento il contatore delle possibili esplosioni
+                mossaMigliore = pos + 1; // setto la mossa migliore
+            } else if (v[pos] == v[pos + 3] && pos < dim - 3) { // controllo se le sfere sono uguali
+                possibiliEsplosioni++; // incremento il contatore delle possibili esplosioni
+                mossaMigliore = pos + 2; // setto la mossa migliore
+            }
             pos++;
         }
         System.out.println("Possibili esplosioni: " + possibiliEsplosioni); // stampo il numero di possibili esplosioni
