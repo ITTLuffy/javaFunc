@@ -17,6 +17,8 @@ public class pozioneEsplosiva {
         riempiVettore(v);
         stampaVettore(v);
 
+        int mossaMigliore = mossaMigliore(v);
+        System.out.println("Mossa migliore: " + mossaMigliore);
         System.out.println("Inserisci la posizione della sfera da togliere");
         togliSfera(v, in.nextInt());
 
@@ -53,7 +55,7 @@ public class pozioneEsplosiva {
         * giallo = 3
         * blu = 4
          */
-        for (int i : v) {
+        for (int i = 0; i < v.length; i++) {
             v[dim] = r.nextInt(1, 5);
             dim++;
         }
@@ -116,5 +118,24 @@ public class pozioneEsplosiva {
         }
         return cont;
     }
+
+    // public static int simulaMossa(int[] v, int pos) {
+
+    // }
+
+    public static int mossaMigliore(int[] v) {
+        int mossaMigliore = 0;
+        int cont = 0;
+
+        while (cont < dim - 3) {
+            if (v[cont] == v[cont + 2] && v[cont] != v[cont + 1]) {
+                mossaMigliore = cont + 1;
+            }
+            cont++;
+        }
+
+        return mossaMigliore;
+    }
+
 
 }
