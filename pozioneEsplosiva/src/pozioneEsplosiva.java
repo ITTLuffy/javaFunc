@@ -1,3 +1,4 @@
+
 import java.util.*;
 
 public class pozioneEsplosiva {
@@ -6,8 +7,6 @@ public class pozioneEsplosiva {
     public static Random r = new Random();
     public static int dim = 0; // dimensione dinamica
     public static int dimMax = 0; // variabile per la dimensione massima del vettore
-
-
 
     public static void main(String[] args) {
         System.out.println("Inserisci la lunghezza del vettore con il quale vuoi giocare");
@@ -18,12 +17,19 @@ public class pozioneEsplosiva {
         riempiVettore(v);
         stampaVettore(v);
 
-        System.out.println("");
+        System.out.println("Inserisci la posizione della sfera da togliere");
+        togliSfera(v, in.nextInt());
+
         esplosione(v);
+
+        int sfereRimosse = sfereRimosse(v);
+        System.out.println("Sono state rimosse " + sfereRimosse + " sfere");
+
     }
 
     /**
      * Funzione per stampare il vettore
+     *
      * @param v vettore da stampare
      */
     public static void stampaVettore(int[] v) {
@@ -31,9 +37,14 @@ public class pozioneEsplosiva {
         for (int i = 0; i < dim; i++) {
             System.out.print(v[i] + " ");
         }
-        System.out.print("]");
+        System.out.println("]");
     }
 
+    /**
+     * Funzione per riempire il vettore
+     *
+     * @param v vettore da riempire
+     */
     public static void riempiVettore(int[] v) {
         // colori
         /*
@@ -41,20 +52,26 @@ public class pozioneEsplosiva {
         * verde = 2
         * giallo = 3
         * blu = 4
-        */
-        if(dim < dimMax) {
-
-            for (int i : v) {
-                v[dim] = r.nextInt(1, 5);
-                dim++;
-            }
-
+         */
+        for (int i : v) {
+            v[dim] = r.nextInt(1, 5);
+            dim++;
         }
+
     }
 
+    /**
+     * Funzione per togliere una sfera
+     *
+     * @param v vettore
+     * @param pos posizione della sfera da togliere
+     */
     public static void togliSfera(int[] v, int pos) {
         if (pos > 0 && pos < dimMax) {
-            v[pos] = 0;
+            for (int i = pos; i < dim - 1; i++) {
+                v[i] = v[i + 1];
+            }
+            v[dim - 1] = 0;
         }
     }
 
@@ -70,7 +87,7 @@ public class pozioneEsplosiva {
             esploso = false; // inizializzo a false
             int i = 0; // variabile per la posizione a 0
             while (i < dim - 1) { // scorro il vettore
-                if (v[i] == v[i + 1]) { // controllo se le sfere sono uguali
+                if (v[i] == v[i + 1] && v[i] != 0) { // controllo se le sfere sono uguali
                     int j = i; // contatore per sfere uguali
                     while (j < dim - 1 && v[j] == v[j + 1]) { // controllo se ci sono sfere uguali
                         j++; // incremento sfere uguali
@@ -78,20 +95,26 @@ public class pozioneEsplosiva {
                     for (int k = j + 1; k < dim; k++) { // ciclo for per spostare le sfere
                         v[k - (j - i + 1)] = v[k]; // sposto le sfere
                     }
-                    int nuoviElementi = j - i + 1; // numero di nuovi elementi da aggiungere
-                    dim -= nuoviElementi; // decremento la dimensione logica per gestire nuovi riempimenti
-                    for (int k = dim; k < dim + nuoviElementi; k++) {
-                        v[k] = r.nextInt(4); // riempio gli spazi vuoti con nuovi colori casuali
+                    for (int k = dim - (j - i + 1); k < dim; k++) {
+                        v[k] = 0; // riempio gli spazi vuoti con 0
                     }
-                    dim += nuoviElementi; // ripristino la dimensione logica
                     esploso = true; // setto a true
-                } else { // se non ci sono sfere uguali
+                } else {
                     i++; // incremento la posizione
                 }
             }
-
         } while (esploso); // finché ci sono sfere uguali
         stampaVettore(v); // stampo il risultato
+    }
+
+    public static int sfereRimosse(int[] v) {
+        int cont = 0;
+        for (int i = 0; i < dim; i++) {
+            if (v[i] == 0) {
+                cont++;
+            }
+        }
+        return cont;
     }
 
 }
