@@ -34,7 +34,7 @@ public class pozioneEsplosiva {
         // stampo il vettore
         stampaVettore(v);
 
-        dim = 0; // resetto la dimensione
+        dim = 0; // resetto la dimensione per poterla riutilizzare
 
         // array g2
         int[] v2 = new int[dimMax];
