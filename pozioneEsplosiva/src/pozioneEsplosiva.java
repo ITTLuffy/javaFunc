@@ -4,16 +4,26 @@ import java.util.*;
 /**
  * giocatore 1 = g1 giocatore 2 = g2 rosso = 1 blu = 2 giallo = 3 verde = 4
  */
+
 public class pozioneEsplosiva {
 
     public static Scanner in = new Scanner(System.in);
     public static Random r = new Random();
-    public static int dim = 0; // dimensione dinamica
+    public static int dim = 0; // dimensione dinamica g1
+    public static int dim2 = 0; // dimensione dinamica g2
     public static int dimMax = 0; // variabile per la dimensione massima del vettore
 
     public static void main(String[] args) {
+
+        System.out.println("********************************************");
+        System.out.println("\n");
+        System.out.println("            POZIONE ESPLOSIVA ");
+        System.out.println("\n");
+        System.out.println("********************************************");
+        System.out.println("L'obiettivo del gioco è rimuovere il maggior numero di palline possibili in una sola mossa :)");
+
         // dimensione array g1
-        System.out.println("Inserisci la lunghezza del vettore con il quale vuoi giocare");
+        System.out.println("Inserisci la lunghezza del vettore con il quale volete giocare");
         dimMax = in.nextInt();
 
         // array g1
@@ -24,21 +34,52 @@ public class pozioneEsplosiva {
         // stampo il vettore
         stampaVettore(v);
 
-        // mossa migliore
+        dim = 0; // resetto la dimensione
+
+        // array g2
+        int[] v2 = new int[dimMax];
+
+        // riempio il vettore
+        riempiVettore(v2);
+        // stampo il vettore
+        stampaVettore(v2);
+
+
+        // mossa migliore g1
         int mossaMigliore = mossaMigliore(v);
-        System.out.println("Mossa migliore: " + mossaMigliore);
-        // simula mossa
-        System.out.println("Vuoi simulare una mossa? (s/n)");
+        System.out.println("Mossa migliore g1: " + mossaMigliore);
+
+        // mossa migliore g2
+        mossaMigliore = mossaMigliore(v2); // riutilizzo la variabile
+        System.out.println("Mossa migliore g2: " + mossaMigliore);
+
+        // simula mossa g1
+        System.out.println("G1: vuoi simulare una mossa? (s/n)");
         char risposta = in.next().charAt(0);
-        if (risposta == 's') {
+        while (risposta == 's') {
             System.out.println("Inserisci la posizione della sfera da togliere");
             int pos = in.nextInt();
             int simulaMossa = simulaMossa(v, pos);
             System.out.println("La mossa porterebbe a rimuovere " + simulaMossa + " sfere");
+            System.out.println("Vuoi simulare un'altra mossa? (s/n)");
+            risposta = in.next().charAt(0);
         }
 
+        // simula mossa g2
+        System.out.println("G2: vuoi simulare una mossa? (s/n)");
+        risposta = in.next().charAt(0); // utilizzo la stessa variaible di prima
+        while (risposta == 's') {
+            System.out.println("Inserisci la posizione della sfera da togliere");
+            int pos = in.nextInt();
+            int simulaMossa = simulaMossa(v2, pos);
+            System.out.println("La mossa porterebbe a rimuovere " + simulaMossa + " sfere");
+            System.out.println("Vuoi simulare un'altra mossa? (s/n)");
+            risposta = in.next().charAt(0);
+        }
+
+
         // rimuovi sfera
-        System.out.println("Inserisci la posizione della sfera da togliere");
+        System.out.println("G1: inserisci la posizione della sfera da togliere");
         togliSfera(v, in.nextInt());
 
         // esplosione dopo la rimozione
@@ -46,7 +87,26 @@ public class pozioneEsplosiva {
 
         // calcolo delle sfere rimosse
         int sfereRimosse = sfereRimosse(v);
-        System.out.println("Sono state rimosse " + sfereRimosse + " sfere");
+        System.out.println("Sono state rimosse " + sfereRimosse + " sfere dal g1");
+
+        // rimuovi sfera
+        System.out.println("G2: inserisci la posizione della sfera da togliere");
+        togliSfera(v2, in.nextInt());
+
+        // esplosione dopo la rimozione
+        esplosione(v2);
+
+        // calcolo delle sfere rimosse
+        int sfereRimosse2 = sfereRimosse(v2);
+        System.out.println("Sono state rimosse " + sfereRimosse2 + " sfere dal g2");
+
+        if (sfereRimosse > sfereRimosse2) {
+            System.out.println("Il vincitore è il g1");
+        } else if (sfereRimosse < sfereRimosse2) {
+            System.out.println("Il vincitore è il g2");
+        } else {
+            System.out.println("Pareggio");
+        }
 
     }
 
@@ -79,7 +139,7 @@ public class pozioneEsplosiva {
             // incremento la dimensione
             dim++; // la dimensione funge come indice
         }
-
+        
     }
 
     /**
