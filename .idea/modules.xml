@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/arrayMethods/arrayMethods.iml" filepath="$PROJECT_DIR$/arrayMethods/arrayMethods.iml" />
+      <module fileurl="file://$PROJECT_DIR$/arrayMethods2/arrayMethods2.iml" filepath="$PROJECT_DIR$/arrayMethods2/arrayMethods2.iml" />
+      <module fileurl="file://$PROJECT_DIR$/arrayMethods3/arrayMethods3.iml" filepath="$PROJECT_DIR$/arrayMethods3/arrayMethods3.iml" />
+      <module fileurl="file://$PROJECT_DIR$/arrayMethods4/arrayMethods4.iml" filepath="$PROJECT_DIR$/arrayMethods4/arrayMethods4.iml" />
+      <module fileurl="file://$PROJECT_DIR$/exercisesCorrection/exercisesCorrection.iml" filepath="$PROJECT_DIR$/exercisesCorrection/exercisesCorrection.iml" />
+      <module fileurl="file://$PROJECT_DIR$/exercisesMethods/exercisesMethods.iml" filepath="$PROJECT_DIR$/exercisesMethods/exercisesMethods.iml" />
+      <module fileurl="file://$PROJECT_DIR$/holidayHomework/holidayHomework.iml" filepath="$PROJECT_DIR$/holidayHomework/holidayHomework.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/javaFunc.iml" filepath="$PROJECT_DIR$/.idea/javaFunc.iml" />
+      <module fileurl="file://$PROJECT_DIR$/methodsIntro/methodsIntro.iml" filepath="$PROJECT_DIR$/methodsIntro/methodsIntro.iml" />
+      <module fileurl="file://$PROJECT_DIR$/methodsPyramid/methodsPyramid.iml" filepath="$PROJECT_DIR$/methodsPyramid/methodsPyramid.iml" />
+    </modules>
+  </component>
+</project>
