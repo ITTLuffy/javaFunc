@@ -13,7 +13,7 @@ public class strings {
     public static String messaggio(String messaggio, int k) {
         System.out.println("Inserisci il messaggio segreto");
         messaggio = in.next();
-        System.out.println("Inserisci la chiave");
+        System.out.println("Inserisci la chiave, possibilmente uguale a 3");
         k = in.nextInt();
         // contatore posizione stringa
         int cont = 0;

@@ -29,7 +29,7 @@ public class App {
             // cercaPosizione(vettore, in.nextInt());
 
             // chiamata a appendiMultipla
-            int[] nuoviValori = { 4, 5, 6, 7, 8 };
+            int[] nuoviValori = { 4, 5, 6, 7, 8, 9, 10};
             appendiMultipla(vettore, nuoviValori);
             stampa(vettore);
         
@@ -167,7 +167,14 @@ public class App {
     //     return -1;
     // }
 
-    static boolean appendiMultipla(int[] v, int... nuoviValori) {
+    /**
+     * Inserisce più valori in coda al vettore
+     *
+     * @param v vettore da modificare
+     * @param nuoviValori i nuovi elementi da inserire, facenti parte di un array
+     * @return esito dell'inserimento
+     */
+    static boolean appendiMultipla(int[] v, int... nuoviValori) { // int... è un array di valori
         for (int i = 0; i < nuoviValori.length; i++) {
             appendiValore(v, nuoviValori[i]);
         }
