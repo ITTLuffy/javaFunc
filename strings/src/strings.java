@@ -35,14 +35,14 @@ public class strings {
             // aggiorno il contatore
             contChiave++;
 
-
-            cont = riga-1;
-
-            cont++;
-
+            // contatore per stampare singole parole
+            cont = riga;
+            
+            // 
             riga++;
 
         }
+        
         return messaggio;
 
     }

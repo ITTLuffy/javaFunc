@@ -1,5 +1,4 @@
 
-import java.util.Scanner;
 
 public class App {
 
@@ -10,8 +9,6 @@ public class App {
     static final int DIM_MAX = 20;
 
     public static void main(String[] args) throws Exception {
-        try ( // variabili locali
-                Scanner in = new Scanner(System.in)) {
             int[] vettore = new int[DIM_MAX];
 
             // System.out.println(Arrays.toString(vettore));
@@ -23,15 +20,19 @@ public class App {
             appendiValore(vettore, 56);
             stampa(vettore);
 
-            // funzione cerca
-            System.out.println("Inserisci il valore da cercare");
-            cerca(vettore, in.nextInt());
+            // // funzione cerca
+            // System.out.println("Inserisci il valore da cercare");
+            // cerca(vettore, in.nextInt());
 
-            // funzione cercaPosizione
-            System.out.println("Inserisci il valore da cercare");
-            cercaPosizione(vettore, in.nextInt());
+            // // funzione cercaPosizione
+            // System.out.println("Inserisci il valore da cercare");
+            // cercaPosizione(vettore, in.nextInt());
 
-        }
+            // chiamata a appendiMultipla
+            int[] nuoviValori = { 4, 5, 6, 7, 8 };
+            appendiMultipla(vettore, nuoviValori);
+            stampa(vettore);
+        
 
     }
 
@@ -65,7 +66,6 @@ public class App {
 
         // vedo se c'è spazio
         if (dim < DIM_MAX) {
-            System.out.println("Non c'è spazio");
             // inserisco il valore
             v[dim] = nuovo;
 
@@ -74,6 +74,7 @@ public class App {
 
             return true;
         } else {
+            System.out.println("Non c'è spazio");
             return false;
         }
 
@@ -144,26 +145,33 @@ public class App {
      * @return true se il valore è presente, false altrimenti
      */
 
-    static boolean cerca(int[] v, int valore) {
-        for (int i = 0; i < v.length; i++) {
-            if (v[i] == valore) {
-                System.out.println("Valore presente in posizione " + i);
-                return true;
-            }
-        }
-        System.err.println("-1");
-        return false;
-    }
+    // static boolean cerca(int[] v, int valore) {
+    //     for (int i = 0; i < v.length; i++) {
+    //         if (v[i] == valore) {
+    //             System.out.println("Valore presente in posizione " + i);
+    //             return true;
+    //         }
+    //     }
+    //     System.err.println("-1");
+    //     return false;
+    // }
 
-    static int cercaPosizione(int[] v, int valore) {
-        for (int i = 0; i < v.length; i++) {
-            if (v[i] == valore) {
-                System.out.println("Valore presente in posizione " + i);
-                return i;
-            }
+    // static int cercaPosizione(int[] v, int valore) {
+    //     for (int i = 0; i < v.length; i++) {
+    //         if (v[i] == valore) {
+    //             System.out.println("Valore presente in posizione " + i);
+    //             return i;
+    //         }
+    //     }
+    //     System.out.println("-1");
+    //     return -1;
+    // }
+
+    static boolean appendiMultipla(int[] v, int... nuoviValori) {
+        for (int i = 0; i < nuoviValori.length; i++) {
+            appendiValore(v, nuoviValori[i]);
         }
-        System.out.println("-1");
-        return -1;
+        return true;
     }
 
 }
