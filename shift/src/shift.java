@@ -1,27 +1,27 @@
+
 import java.util.Arrays;
 import java.util.Random;
 
-public class testType {
+public class shift {
+
     public static void main(String[] args) throws Exception {
+        int[] v = new int[6];
         Random r = new Random();
-        int[] v = new int[6]; // array
         for (int i = 0; i < v.length; i++) {
             v[i] = r.nextInt(1, 10);
         }
+
         System.out.println(Arrays.toString(v));
-        int[] v2 = shift(v);
+        int[] v2 = vettore(v);
         System.out.println(Arrays.toString(v2));
     }
 
-    public static int[] shift(int[] v) {
-        int[] v2 = Arrays.copyOf(v, 7);
-        Arrays.fill(v2, 0);
-        for (int i = 0; i < v.length-1; i--) {
-            v[i] = v2[i+1];
+    public static int[] vettore(int[] v) {
+        int[] v2 = Arrays.copyOf(v, v.length);
+        v2[0] = v[v.length - 1];
+        for (int i = 1; i < v.length; i++) {
+            v2[i] = v[i - 1];
         }
-        v2[6] = v2[0];
         return v2;
-
-
     }
 }
